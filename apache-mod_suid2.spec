@@ -1,10 +1,9 @@
 %define		mod_name	suid2
-%define		ver		0.3
 %define 	apxs		/usr/sbin/apxs
 Summary:	Apache module: execution of scripts under their own uids
 Summary(pl):	Modu³ do apache: wykonywanie skryptów pod wskazanym uidem
 Name:		apache-mod_%{mod_name}
-Version:	%{ver}
+Version:	0.3
 Release:	1
 License:	ASL v2.0
 Group:		Networking/Daemons
@@ -39,7 +38,7 @@ Modu³ do apache: wykonywanie skryptów pod wskazanym uidem per-vhost.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_pkglibdir}
 
-libtool install mod_%{mod_name}.la $RPM_BUILD_ROOT%{_pkglibdir}
+install .libs/mod_%{mod_name}.so $RPM_BUILD_ROOT%{_pkglibdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
