@@ -31,13 +31,13 @@ Modu³ do apache: wykonywanie skryptów pod wskazanym uidem per-vhost.
 %patch0 -p1
 
 %build
-%{apxs} -c mod_%{mod_name}.c -o mod_%{mod_name}.so
+%{apxs} -c mod_%{mod_name}.c
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_pkglibdir}
 
-install mod_%{mod_name}.so $RPM_BUILD_ROOT%{_pkglibdir}
+install .libs/mod_%{mod_name}.so $RPM_BUILD_ROOT%{_pkglibdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
