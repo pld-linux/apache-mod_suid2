@@ -1,0 +1,15 @@
+diff -urN mod_suid2-0.3.org/mod_suid2.c mod_suid2-0.3/mod_suid2.c
+--- mod_suid2-0.3.org/mod_suid2.c	2004-09-01 00:41:53.799114624 +0200
++++ mod_suid2-0.3/mod_suid2.c	2004-09-01 01:36:15.244299592 +0200
+@@ -290,6 +290,11 @@
+       ap_max_requests_per_child = 1;
+ 
+       /*
++       * initialize default groups
++       */
++      initgroups(SUID_DEFAULT_USER, ap_gname2id (SUID_DEFAULT_GROUP));
++
++      /*
+        * setegid() and seteuid() for the secirity.
+        */
+       setegid (ap_gname2id (SUID_DEFAULT_GROUP));
