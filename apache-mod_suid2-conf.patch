@@ -1,7 +1,7 @@
 diff -urN mod_suid2-0.2.org/mod_suid2.c mod_suid2-0.2/mod_suid2.c
 --- mod_suid2-0.2.org/mod_suid2.c	2004-02-28 20:04:10.384466363 +0100
-+++ mod_suid2-0.2/mod_suid2.c	2004-02-28 20:04:36.444894842 +0100
-@@ -168,10 +168,10 @@
++++ mod_suid2-0.2/mod_suid2.c	2004-02-28 20:40:27.121379144 +0100
+@@ -168,16 +168,18 @@
  #include "mpm_common.h"
  
  #define MODULE                "mod_suid2"
@@ -16,3 +16,40 @@ diff -urN mod_suid2-0.2.org/mod_suid2.c mod_suid2-0.2/mod_suid2.c
  #define NDEBUG	              1
  
  typedef struct
+ {
+   int suid2_uid;
+   int suid2_gid;
++  int suid2_def_uid;
++  int suid2_def_gid;
+ } suid2_config_t;
+ 
+ module AP_MODULE_DECLARE_DATA suid2_module;
+@@ -186,8 +188,8 @@
+ create_config (apr_pool_t * p, char *d)
+ {
+   suid2_config_t *conf = apr_palloc (p, sizeof (*conf));
+-  conf->suid2_uid = ap_uname2id (SUID_DEFAULT_USER);	/* Default User */
+-  conf->suid2_gid = ap_gname2id (SUID_DEFAULT_GROUP);	/* Default Group */
++  conf->suid2_uid = conf->suid2_def_uid = ap_uname2id (SUID_DEFAULT_USER);	/* Default User */
++  conf->suid2_gid = conf->suid2_def_gid = ap_gname2id (SUID_DEFAULT_GROUP);	/* Default Group */
+   return conf;
+ }
+ 
+@@ -276,7 +278,7 @@
+   suid2_config_t *conf = ap_get_module_config (r->server->module_config,
+ 					       &suid2_module);
+   /* setgid & setuid */
+-  if (conf->suid2_gid < GID_MIN)
++  if (conf->suid2_gid < GID_MIN && conf->suid2_gid != conf->suid2_def_gid)
+     {
+       ap_log_error (APLOG_MARK, APLOG_ERR, 0, NULL,
+ 		    "%s %s %s GID(%d) < GID_MIN(%d)",
+@@ -284,7 +286,7 @@
+ 		    conf->suid2_gid, GID_MIN);
+       return HTTP_FORBIDDEN;
+     }
+-  if (conf->suid2_uid < UID_MIN)
++  if (conf->suid2_uid < UID_MIN && conf->suid2_uid != conf->suid2_def_uid)
+     {
+       ap_log_error (APLOG_MARK, APLOG_ERR, 0, NULL,
+ 		    "%s %s %s UID(%d) < UID_MIN(%d)",
