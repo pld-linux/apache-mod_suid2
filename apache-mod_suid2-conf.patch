@@ -1,7 +1,7 @@
-diff -urN mod_suid2-0.2.1.org/mod_suid2.c mod_suid2-0.2.1/mod_suid2.c
---- mod_suid2-0.2.1.org/mod_suid2.c	2004-03-27 02:15:52.396826096 +0100
-+++ mod_suid2-0.2.1/mod_suid2.c	2004-03-27 02:18:43.577802632 +0100
-@@ -168,10 +168,10 @@
+diff -urN mod_suid2-0.3.org/mod_suid2.c mod_suid2-0.3/mod_suid2.c
+--- mod_suid2-0.3.org/mod_suid2.c	2004-09-01 00:41:53.799114624 +0200
++++ mod_suid2-0.3/mod_suid2.c	2004-09-01 00:43:40.123950792 +0200
+@@ -180,10 +180,10 @@
  #include "mpm_common.h"
  
  #define MODULE                "mod_suid2"
@@ -13,6 +13,6 @@ diff -urN mod_suid2-0.2.1.org/mod_suid2.c mod_suid2-0.2.1/mod_suid2.c
 +#define SUID_DEFAULT_GROUP    "http"
 +#define UID_MIN               1000
 +#define GID_MIN               1000
- #define NDEBUG	              1
+ #define _NDEBUG	              1
  
  typedef struct
