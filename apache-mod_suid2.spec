@@ -1,5 +1,5 @@
 %define		mod_name	suid2
-%define		ver		0.2
+%define		ver		0.2.1
 %define 	apxs		/usr/sbin/apxs
 Summary:	Apache module: execution of scripts under their own uids
 Summary(pl):	Modu³ do apache: wykonywanie skryptów pod wskazanym uidem
@@ -9,7 +9,7 @@ Release:	0.1
 License:	ASL v2.0
 Group:		Networking/Daemons
 Source0:	http://bluecoara.net/download/apache/mod_%{mod_name}-%{version}.tar.gz
-# Source0-md5:	c45ba4932cade36468deacf484c4207f
+# Source0-md5:	f7e90cb5050c634a76b7194d15bd3263
 Patch0:		%{name}-conf.patch
 URL:		http://bluecoara.net/servers/apache/mod_suid2_en.phtml
 BuildRequires:	%{apxs}
