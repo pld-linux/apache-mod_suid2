@@ -1,7 +1,7 @@
 %define		mod_name	suid2
 %define 	apxs		/usr/sbin/apxs
 Summary:	Apache module: execution of scripts under their own uids
-Summary(pl):	Modu≥ do apache: wykonywanie skryptÛw pod wskazanym uidem
+Summary(pl.UTF-8):   Modu≈Ç do apache: wykonywanie skrypt√≥w pod wskazanym uidem
 Name:		apache-mod_%{mod_name}
 Version:	0.3
 Release:	1
@@ -24,8 +24,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Apache module: execution of scripts under their own uids per-vhost.
 
-%description -l pl
-Modu≥ do apache: wykonywanie skryptÛw pod wskazanym uidem per-vhost.
+%description -l pl.UTF-8
+Modu≈Ç do apache: wykonywanie skrypt√≥w pod wskazanym uidem per-vhost.
 
 %prep
 %setup -q -n mod_%{mod_name}-%{version}
