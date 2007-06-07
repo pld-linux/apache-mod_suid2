@@ -12,7 +12,7 @@ Source0:	http://bluecoara.net/download/apache/mod_%{mod_name}-%{version}.tar.gz
 Patch0:		%{name}-conf.patch
 Patch1:		%{name}-groups.patch
 URL:		http://bluecoara.net/servers/apache/mod_suid2_en.phtml
-BuildRequires:	%{apxs}
+BuildRequires:	apache-apxs >= 2.0
 BuildRequires:	apache-devel >= 2.0.0
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	apache(modules-api) = %apache_modules_api
