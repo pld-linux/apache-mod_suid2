@@ -6,7 +6,7 @@ Name:		apache-mod_%{mod_name}
 Version:	0.3
 Release:	1
 License:	ASL v2.0
-Group:		Networking/Daemons
+Group:		Networking/Daemons/HTTP
 Source0:	http://bluecoara.net/download/apache/mod_%{mod_name}-%{version}.tar.gz
 # Source0-md5:	275a1372a63bd2f9031b71f8a621f531
 Patch0:		%{name}-conf.patch
